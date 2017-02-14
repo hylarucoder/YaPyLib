@@ -1,0 +1,9 @@
+__title__ = 'yapylib'
+__description__ = '日常代码,拷贝在身边,一用很多年'
+__url__ = 'https://github.com/twocucao/YaPyLib'
+__version__ = '0.0.1'
+__build__ = 0x021801
+__author__ = 'twocucao'
+__author_email__ = 'twocucao@gmail.com'
+__license__ = 'Apache 2.0'
+__copyright__ = 'Copyright 2017 twocucao'

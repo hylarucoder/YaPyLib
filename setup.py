@@ -19,11 +19,11 @@ setup(name='yapylib',
       install_requires=[
           'requests',
           'parsel',
-          'beautifulsoup4',
+          'beautifulsoup4', 'jinja2',
       ],
       entry_points={
           'console_scripts': [
-              'yapylib = yapylib.yapylib:cli'
+              'yapylib = yapylib.cli:main'
           ]
       },
       )

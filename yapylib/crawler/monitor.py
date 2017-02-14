@@ -1,0 +1,3 @@
+class MonitorWorker(object):
+
+    pass
