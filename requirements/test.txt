@@ -1,0 +1,10 @@
+# Test dependencies go here.
+-r base.txt
+
+
+
+coverage==4.2
+flake8==3.0.4 # pyup: != 2.6.0
+
+# pytest
+pytest-sugar==0.7.1

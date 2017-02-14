@@ -1,0 +1,6 @@
+# Local development dependencies go here
+-r base.txt
+coverage==4.2
+# improved REPL
+ipdb==0.10.1
+pytest-sugar==0.7.1
