@@ -1,4 +1,3 @@
-import parsel
 from parsel import Selector
 
 

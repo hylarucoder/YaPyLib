@@ -6,17 +6,12 @@ YaPyLib 使用指北
 .. toctree::
    :maxdepth: 2
 
-   README
-   安装
-   使用
-   模块
-   contributing
-   作者
-   发布历史
-   history
+   overview
    installation
+   usage
+   contributing
+   history
    modules
-   readme
    usage
 
 Indices and tables

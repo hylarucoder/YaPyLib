@@ -7,12 +7,8 @@ from email.mime.multipart import MIMEMultipart
 from email.mime.text import MIMEText
 from email.utils import parseaddr, formataddr
 
-import psutil
-
-from yapylib.decorator.retries import retries
+from yapylib.decorators.retries import retries
 from yapylib.settings import MAIL_SERVER, MAIL_DEFAULT_SENDER, MAIL_PASSWORD, SENDER, RECEIVERS, DEBUG
-from yapylib.utils.date_util import fmt_cur_date_time
-from yapylib.utils.sys_utils import get_internal_ip
 from yapylib.utils.template_util import render_template
 
 MAIL_TYPE_TEXT = 1

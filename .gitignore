@@ -1,4 +1,4 @@
-yapylib.log
+yapylib.log*
 staticfiles/
 media/*
 # Vagrant

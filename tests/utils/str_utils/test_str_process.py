@@ -4,7 +4,8 @@
 import pytest
 
 from yapylib.utils.str_util.str_process import filter_chinese_characters, filter_all_chinese_things, \
-    turn_full_to_half_width, turn_half_to_full_width, filter_numbers, get_digits_from_chinese, simple_render
+    turn_full_to_half_width, turn_half_to_full_width, filter_numbers, get_digits_from_chinese, simple_render, \
+    shrink_repeated
 
 CHINESE_ARTICLE = """\
 Python的创始人为吉多·范罗苏姆（Guido van Rossum）。1989年的圣诞节期间，吉多·范罗苏姆为了在阿姆斯特丹打发时间，决心开发一个新的脚本解释程序，作为ABC语言的一种继承。之所以选中Python作为程序的名字，是因为他是BBC电视剧——蒙提·派森的飞行马戏团（Monty Python's Flying Circus）的爱好者。ABC是由吉多参加设计的一种教学语言。就吉多本人看来，ABC这种语言非常优美和强大，是专门为非专业程序员设计的。但是ABC语言并没有成功，究其原因，吉多认为是非开放造成的。吉多决心在Python中避免这一错误，并获取了非常好的效果，完美结合了C和其他一些语言。[5]
@@ -68,6 +69,15 @@ def test_turn_full_to_half_width(test_input, expected):
 ])
 def test_turn_half_to_full_width(test_input, expected):
     assert turn_half_to_full_width(test_input) == expected
+
+
+@pytest.mark.parametrize('test_input,max_times,expected', [
+    ("asaaaaaaaaaaaaaaaas", 3, "asaaas"),
+    ("asaaaaaaaaassssssss", 3, "asaaasss"),
+    ("asaaaaaaaaassssssss", 5, "asaaaaasssss"),
+])
+def test_shrink_repeated(test_input, max_times, expected):
+    assert shrink_repeated(test_input, max_times) == expected
 
 
 @pytest.mark.parametrize('test_input,expected', [

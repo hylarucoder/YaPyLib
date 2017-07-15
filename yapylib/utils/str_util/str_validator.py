@@ -91,7 +91,7 @@ def valid_vehicle_num(content):
 
 def LevenshteinDistance(s, t):
     '''字符串相似度算法（Levenshtein Distance算法）
-  
+
   一个字符串可以通过增加一个字符，删除一个字符，替换一个字符得到另外一个
   字符串，假设，我们把从字符串A转换成字符串B，前面3种操作所执行的最少
   次数称为AB相似度

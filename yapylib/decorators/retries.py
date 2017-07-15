@@ -4,15 +4,18 @@ from time import sleep
 
 
 def example_exc_handler(tries_remaining, exception, delay):
-    """Example exception handler; prints a warning to stderr.
+    """
+    Example exception handler; prints a warning to stderr.
     tries_remaining: The number of tries remaining.
     exception: The exception instance which was raised.
     """
-    print (sys.stderr, "Caught '%s', %d tries remaining, sleeping for %s seconds" % ( exception, tries_remaining, delay))
+    print(sys.stderr, "Caught '%s', %d tries remaining, sleeping for %s seconds" %
+          (exception, tries_remaining, delay))
 
 
 def retries(max_tries, delay=1, backoff=2, exceptions=(Exception,), hook=None):
-    """Function decorator implementing retrying logic.
+    """
+    Function decorator implementing retrying logic.
     delay: Sleep this many seconds * backoff * try number after failure
     backoff: Multiply delay by this factor after each failure
     exceptions: A tuple of exception classes; default (Exception,)
@@ -36,10 +39,7 @@ def retries(max_tries, delay=1, backoff=2, exceptions=(Exception,), hook=None):
             mydelay = delay
             tries = list(range(max_tries))
             tries.reverse()
-            print(tries)
             for tries_remaining in tries:
-                print("tries_remaining")
-                print(tries_remaining)
                 try:
                     return func(*args, **kwargs)
                 except exceptions as e:

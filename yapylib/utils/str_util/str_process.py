@@ -75,7 +75,7 @@ def filter_chinese_characters(_str):
 
 
 def filter_chinese_punctuations(_str):
-    new_str = re.sub(r"[\s+\.\!\/_,$%^*(+\"\']+|[+——！，。？、~@#￥%……&*（）：；《）《》“”()»〔〕-]+", "", _str)
+    new_str = re.sub(r"[\s+.!/_,$%^*(\"']+|[+—！，。？、~@#￥%…&*（）：；《》“”()»〔〕-]+", "", _str)
     return new_str
 
 
@@ -91,6 +91,38 @@ def filter_numbers(_str):
 
 def filter_english_characters(_str):
     raise NotImplementedError()
+
+
+ch_puncs = ["！", "，", "。", "？", "、", "（", "）", "：", "；", "《", "》", "“ ", "” "]
+en_puncs = ["!", ",", ".", "?", ",", "(", ")", ":", ";", "<", ">", "\"", "\""]
+
+
+def sub_chinese_punctuations(_str):
+    """
+    :param _str:
+    :return:
+    """
+    for k, v in zip(ch_puncs, en_puncs):
+        _str = _str.replace(k, v)
+    return _str
+
+
+def shrink_repeated(_str, max_times=3):
+    """
+    :param _str:
+    :param max_times:
+    将重复 max_times 次以上的 字符串删减为 max_times 次
+    :return:
+    """
+    pat = r'(.)\1{%d,}' % max_times
+    repl = r''.join([r'\1' for i in range(max_times)])
+    return re.sub(pat, repl, _str)
+
+
+def shrink_online_rent(_str):
+    _str = sub_chinese_punctuations(_str)
+    _str = shrink_repeated(_str, 4)
+    return _str
 
 
 HALF2FULL = dict((i, i + 0xFEE0) for i in range(0x21, 0x7F))

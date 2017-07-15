@@ -14,6 +14,14 @@ Google国外为GPS
 
 @source from:  https://github.com/wandergis/coordTransform_py/blob/master/coordTransform_utils.py
 """
+from enum import Enum
+
+
+class EPSGProjection(Enum):
+    WGS84 = 1
+    GCJ02 = 2
+    BD09 = 3
+
 
 ENV_AMAP_AK = AMAP_AK
 key = ENV_AMAP_AK  # 这里填写你的高德api的key
@@ -50,6 +58,18 @@ def geocode(address):
             return None
     else:
         return None
+
+
+def bd09towgs84(lng, lat):
+    lng1, lat1 = bd09togcj02(lng, lat)
+    lng2, lat2 = gcj02towgs84(lng1, lat1)
+    return [lng2, lat2]
+
+
+def wgs84tobd09(lng, lat):
+    lng1, lat1 = bd09togcj02(lng, lat)
+    lng2, lat2 = gcj02tobd09(lng1, lat1)
+    return [lng2, lat2]
 
 
 def gcj02tobd09(lng, lat):
