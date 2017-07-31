@@ -1,19 +1,16 @@
 import re
+from collections import Counter
 
 import numpy as np
 import pandas as pd
 from numpy import log
 from yapylib.utils.str_util.str_process import shrink_online_rent
 
-"""
-源代码基于 http://spaces.ac.cn/archives/3491/
-原理基于 http://www.matrix67.com/blog/archives/5044
-"""
-
 
 def dnw_4_normal(input_text):
     """
-    针对弹幕的新词发现算法
+    源代码基于 http://spaces.ac.cn/archives/3491/
+    原理基于 http://www.matrix67.com/blog/archives/5044
     :param input_text:
     :return:
     """
@@ -24,10 +21,10 @@ def dnw_4_normal(input_text):
     for i in drop_dict:  # 去掉标点字
         input_text = input_text.replace(i, '')
 
-    min_count = 3  # 录取词语最小出现次数
-    min_support = 10  # 录取词语最低支持度，1代表着随机组合
+    min_count = 2  # 录取词语最小出现次数
+    min_support = 4  # 录取词语最低支持度，1代表着随机组合
     min_s = 2  # 录取词语最低信息熵，越大说明越有可能独立成词
-    max_sep = 14  # 候选词语的最大字数
+    max_sep = 10  # 候选词语的最大字数
 
     # 为了方便调用，自定义了一个正则表达式的词典
     regexes = {}
@@ -79,18 +76,31 @@ def dnw_4_normal(input_text):
     return pd.DataFrame(pd.concat(t[1:]))
 
 
-def dnw_4_core(input_text):
+def dnw_4_core(input_texts):
     """
-    :param input_text:
+    :param input_texts:
     :return:
 
     统计指定长度的候选词 频数,左邻字信息熵 , 右邻字信息熵
-
-
-
-
+    参考链接实现: https://github.com/izisong/new-words-discovery
     """
-    pass
+
+    unrecord_word_length_min = 2
+    unrecord_word_length_max = 10
+
+    # Step 1. 指定登陆词长度范围,计算词频
+    freq = Counter()
+    cur_text = input_texts
+    for cur_len in range(unrecord_word_length_min, unrecord_word_length_max + 1):
+        # 依次登录登陆词为cur_len的词
+        cur_text_len = len(cur_text)
+        cur_words = [cur_text[i:i + cur_len] for i in range(0, cur_text_len - cur_len)]
+        freq.update(cur_words)
+
+    # Step 2. 过滤掉
+    # Step 3. 指定登录城市
+
+    # Step 1
 
 
 def dnw_4_bilibili(input_text):

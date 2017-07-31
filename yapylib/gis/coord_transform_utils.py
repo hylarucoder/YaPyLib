@@ -194,4 +194,3 @@ if __name__ == '__main__':
     result3 = wgs84togcj02(lng, lat)
     result4 = gcj02towgs84(lng, lat)
     result5 = geocode('北京市朝阳区朝阳公园')
-    print(result1, result2, result3, result4, result5)

@@ -10,7 +10,7 @@ from jinja2 import Environment
 
 ROOT_DIR = os.path.dirname(os.path.dirname(os.path.realpath(__file__)))
 CURRENT_DIR = os.path.curdir
-LOGS_DIR = os.path.join(CURRENT_DIR)
+LOGS_FILE = os.path.expanduser("~/.yapylib.log")
 TEMPLATE_DIR = os.path.join(ROOT_DIR, 'yapylib/templates')
 config_file = os.path.expanduser("~/.yapylib.yaml")
 if not os.path.expanduser(config_file):
@@ -19,7 +19,6 @@ else:
     pass
 with open(config_file, 'r') as f:
     g_config = yaml.load(f.read())
-    print(g_config)
 
 DEBUG = g_config["DEBUG"]
 USE_COLORS = g_config["USE_COLORS"]

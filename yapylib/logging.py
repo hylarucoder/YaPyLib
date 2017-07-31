@@ -2,7 +2,7 @@ import logging
 from logging.config import dictConfig
 import os
 
-from yapylib.settings import USE_COLORS, DEBUG, LOGS_DIR
+from yapylib.settings import USE_COLORS, DEBUG, LOGS_FILE
 
 LOGGING = {  # dictConfig for output stream and file logging
     'version': 1,
@@ -29,7 +29,7 @@ LOGGING = {  # dictConfig for output stream and file logging
             'formatter': 'file',
             'level': 'INFO',
             'when': 'midnight',
-            'filename': str(LOGS_DIR) + '/yapylib.log',
+            'filename': LOGS_FILE,
             'interval': 1,
             'backupCount': 0,
             'encoding': 'utf-8',
