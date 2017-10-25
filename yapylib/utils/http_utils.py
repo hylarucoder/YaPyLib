@@ -80,7 +80,7 @@ def fetch(url, retry=0, func=None):
     try:
         res = s.get(url, timeout=TIMEOUT, proxies=proxies)
         # print(res.status_code)
-        res.encoding = 'utf-8'
+        res.encoding = res.apparent_encoding
         if func:
             if func(res.text):
                 pass
