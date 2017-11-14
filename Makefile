@@ -87,3 +87,10 @@ install: clean ## install the package to the active Python's site-packages
 
 register: clean
 	python setup.py register
+
+initdb:
+	curl https://raw.githubusercontent.com/twocucao/yasyncdrive/master/dvdrental.tar -o /tmp/dvdrental.tar
+	brew install postgresql
+	createuser postgres -s
+	createdb dvdrental
+	pg_restore -U postgres -d dvdrental /tmp/dvdrental.tar

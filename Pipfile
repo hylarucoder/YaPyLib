@@ -1,0 +1,44 @@
+[[source]]
+url = "https://pypi.python.org/simple"
+verify_ssl = true
+name = "pypi"
+
+[[source]]
+url = "https://pypi.doubanio.com/simple"
+verify_ssl = true
+name = 'pypi'
+
+[requires]
+python_version = '3.5'
+
+
+[dev-packages]
+coverage = "*"
+flake8 = "*"
+ipdb = "*"
+pytest = "*"
+pytest-sugar = "*"
+
+[packages]
+
+"-e ." = "*"
+Pillow = "*"
+PyYAML = "*"
+SQLAlchemy = "*"
+beautifulsoup4 = "*"
+click = "*"
+coverage = "*"
+lxml = "*"
+numpy = "*"
+openpyxl = "*"
+pandas = "*"
+parsel = "*"
+psutil = "*"
+psycopg2 = "*"
+pyOpenSSL = "*"
+pymongo = "*"
+requests = "*"
+sqlalchemy = "*"
+tablib = "*"
+urllib3 = "*"
+xlrd = "*"

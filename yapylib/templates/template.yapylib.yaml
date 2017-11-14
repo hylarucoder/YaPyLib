@@ -1,0 +1,20 @@
+DEBUG : True
+USE_COLORS : True
+BAIDU_MAP_AK : "xxxxxxxxxxxxx"
+TENCENT_MAP_AK : "xxxxxxx"
+AMAP_AK : "xxx"
+MAIL_SERVER : "smtp.163.com"
+MAIL_USE_SSL : "true"
+MAIL_USERNAME : "xxxxxxxxxx@163.com"
+MAIL_PASSWORD : "xxxxxxxxxxx"
+MAIL_DEFAULT_SENDER:
+- 'username'
+- 'xxxxxxxx@163.com'
+SENDER:
+  name: 'username'
+  email: 'xxxxxxxxx@163.com'
+RECEIVERS:
+  -
+   name : 'username'
+   email : 'xxxxxxxxxx@163.com'
+DB_CONNECT_STRING: 'postgresql://user:pass@localhost:5432/yapylib'
