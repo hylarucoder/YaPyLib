@@ -1,10 +1,10 @@
 # coding=utf-8
 from yapylib.db.database import Database
 
-class TestDatabase(object):
 
+class TestDatabase(object):
     def setup_class(self):
-        self.db = Database("postgresql://twocucao:pass123@localhost:5432/twocucao")
+        self.db = Database("postgresql://twocucao:pass123@localhost:5432/dvdrental")
 
     def setup_method(self):
         print("setup_method called for every method")
@@ -36,24 +36,23 @@ class TestDatabase(object):
     def test_insert(self):
         assert False
 
-    def test_list_has_sequence(self):
-        assert False
-
     def test_list_table_names(self):
-        assert 'films' in self.db.list_table_names()
-
+        assert 'film_category' in self.db.list_table_names()
 
     def test_query(self):
-        assert False
+        print("""assert 'PostgreSQL' in res[0][0]""")
+        res = self.db.query("select version();")
+        assert 'PostgreSQL' in res[0][0]
 
     def test_query_file(self):
         assert False
 
     def test_query_single_value(self):
-        assert False
+        res = self.db.query_single_value("select version();")
+        assert 'PostgreSQL' in res
 
     def test_table_exists(self):
-        assert self.db.table_exists('films')
+        assert self.db.table_exists('film_category')
 
     def test_table_get_sequence_info(self):
         assert False

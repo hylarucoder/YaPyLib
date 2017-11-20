@@ -145,8 +145,8 @@ class Database(object):
         """
         TODO: 查询
         """
-        self.db.execute(query)
-        return
+        res = self.db.execute(query).fetchone()
+        return res[0]
 
     def query(self, query, fetchall=False, **params):
         """
@@ -154,9 +154,7 @@ class Database(object):
         """
         # 如果不加text的话,一般像pgsql这种对语法支持比较多的容易被
         cursor = self.db.execute(text(query), **params)
-        for row in cursor:
-            print(row)
-        return False
+        return list(cursor)
 
     def insert(self, query):
         """
