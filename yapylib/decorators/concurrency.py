@@ -1,5 +1,4 @@
 
-
 def simple_worker():
     """
     1. 简单多线程装饰器
