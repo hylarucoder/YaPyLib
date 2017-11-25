@@ -97,18 +97,3 @@ def unzip_file():
     pass
 
 
-"""
-下面的程序主要用于MacOS上一些程序的调用
-"""
-
-
-def open_image():
-    pass
-
-
-def open_url():
-    pass
-
-
-def open_video():
-    pass

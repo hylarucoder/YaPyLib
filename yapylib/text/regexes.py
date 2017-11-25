@@ -51,21 +51,3 @@ PT_TIME = r""
 PT_QQ_NUM = r"[1-9][0-9]{4,}"
 PT_UUID = r'[a-f\d]{8}-[a-f\d]{4}-[a-f\d]{4}-[a-f\d]{4}-[a-f\d]{12}'
 
-REGEXES = {
-    'uuid': PT_UUID,
-    'clean_words': PT_CLEAN_WORDS,
-    'chinese': PT_CHINESE,
-    'chinese_id_card': PT_CHINESE_ID_CARD,
-    'chinese_and_num': PT_CHINESE_AND_NUMBER,
-    'chinese_mob_num': PT_CHINESE_MOB_NUM,
-    'chinese_telephone': PT_CHINESE_TELEPHONE,
-    'chinese_money': PT_CHINESE_MONEY,
-    'ipv4': PT_IP_V4,
-    'ipv6': PT_IP_V6,
-    'date': PT_DATE,
-    'time': PT_TIME,
-    'qq_num': PT_QQ_NUM,
-    'email': PT_EMAIL,
-    'link': PT_HTTP_HTTPS_LINK,
-    'datetime': PT_DATETIME,
-}

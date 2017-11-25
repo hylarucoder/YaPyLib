@@ -1,6 +1,7 @@
 import click
+
 from yapylib.cli import pass_context
-from yapylib.utils.nlp_utils.dnw_utils import dnw_4_bilibili
+from yapylib.text.dnw_utils import dnw_4_bilibili
 
 
 @click.command('fnw', short_help='find new words')

@@ -1,4 +1,10 @@
 """
+字符串抽取程序
+抽取类型:
+ - 抽取单个,抽取全部
+"""
+
+"""
 string_util 主要处理 比较短的文本,长文本的处理交给text_util
 
 对字符串的一些常见的判断.
@@ -11,8 +17,6 @@ string_util 主要处理 比较短的文本,长文本的处理交给text_util
 
 """
 import re
-
-from yapylib.utils.str_util import PT_UUID
 
 
 def is_blank(_str):
@@ -45,48 +49,37 @@ def is_equal(actual, expected):
     return actual == expected
 
 
-def contains_chinese(content):
-    pass
+def approximate_equal(actual, expected, min_length=5, accepted_rate=0.8):
+    """
+    利用字符串近似算法进行近似比较
+    :param actual:
+    :param expected:
+    :param min_length:
+    :param accepted_rate:
+    :return:
+    """
+    raise NotImplementedError()
 
 
-def valid_realname(content):
-    pass
+HALF2FULL = dict((i, i + 0xFEE0) for i in range(0x21, 0x7F))
+HALF2FULL[0x20] = 0x3000
+
+FULL2HALF = dict((i + 0xFEE0, i) for i in range(0x21, 0x7F))
+FULL2HALF[0x3000] = 0x20
 
 
-def valid_phone_num(content):
-    pass
+def turn_full_to_half_width(_str):
+    '''
+    Convert all ASCII characters to the full-width counterpart.
+    '''
+    return str(_str).translate(FULL2HALF)
 
 
-def valid_account(content):
-    pass
-
-
-def valid_simple_password(content):
-    pass
-
-
-def valid_complex_password(content):
-    pass
-
-
-def valid_email(content):
-    pass
-
-
-def valid_ip(content):
-    pass
-
-
-def valid_uuid(content):
-    pass
-
-
-def valid_url(content):
-    pass
-
-
-def valid_vehicle_num(content):
-    pass
+def turn_half_to_full_width(_str):
+    '''
+    Convert full-width characters to ASCII counterpart
+    '''
+    return str(_str).translate(HALF2FULL)
 
 
 def LevenshteinDistance(s, t):

@@ -16,6 +16,21 @@ sequences
 import uuid as _uuid
 
 
+def random_true(p):
+    """
+    随机给true
+    :param p:
+    :return:
+    """
+    if 0 <= p <= 1:
+        raise ValueError("请检查参数 0 <= p <= 1")
+    new_p = p * 10000
+    if new_p <= random.randint(0, 10000):
+        return True
+    else:
+        return False
+
+
 def uuid():
     return _uuid.uuid4()
 

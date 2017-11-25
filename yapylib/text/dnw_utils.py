@@ -4,7 +4,8 @@ from collections import Counter
 import numpy as np
 import pandas as pd
 from numpy import log
-from yapylib.utils.str_util.str_process import shrink_online_rent
+
+from yapylib.text.transpose import shrink_online_rent
 
 
 def dnw_4_normal(input_text):

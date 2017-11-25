@@ -1,11 +1,6 @@
-import json
-
 import click
-import parsel
+
 from yapylib.cli import pass_context
-from yapylib.utils.nlp_utils.dnw_utils import dnw_4_normal
-from yapylib.utils.type_util import is_html, is_json
-from yapylib.wrapped.requests import session
 
 
 @click.command('rename', short_help='rename files by expression')
@@ -22,7 +17,7 @@ def cli(ctx, pathname, operate):
 
     1. 从文件名中替换
 
-    [R#regex#repl] : 删除regex匹配的字符串,替换为repl, 符合python 正则语法
+    [R#text#repl] : 删除regex匹配的字符串,替换为repl, 符合python 正则语法
 
     2. 类似于TotalCMD的重命名
 

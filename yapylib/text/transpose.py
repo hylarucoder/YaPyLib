@@ -13,13 +13,12 @@
 @Desc: 针对其他的一些中文字符和英文字符,以及混合中英文字符进行一些简单的提取操作.
 
 """
-import re
-
-from yapylib.utils.str_util import PT_CHINESE_AND_NUMBER, PT_CHINESE_SETENCE
-from yapylib.utils.str_util.str_validator import is_empty
 
 import re
 import string
+
+from yapylib.text.regexes import PT_CHINESE_AND_NUMBER, PT_CHINESE_SETENCE
+from yapylib.text.utils import is_empty
 
 
 class SimpleTemplate(string.Template):
@@ -39,14 +38,29 @@ class SimpleTemplate(string.Template):
 
 def simple_render(content, context):
     """
-    :param content: 
-    :param context: 
-    :return: 
+    :param content:
+    :param context:
+    :return:
     print('MATCHES:', t.pattern.findall(t.template))
     print('SUBSTITUTED:', t.safe_substitute(var='replacement'))
     """
     t = SimpleTemplate(content)
     return t.safe_substitute(context)
+
+
+import jinja2
+
+from yapylib.settings import JINJA2_ENV
+
+
+def render_template(tpl, **context):
+    template = JINJA2_ENV.get_template(tpl)
+    rv = template.render(context)
+    return rv
+
+
+def jinja2_render(content, **context):
+    return render_template(content, **context)
 
 
 def safe_sub(_str, dict):
@@ -123,27 +137,6 @@ def shrink_online_rent(_str):
     _str = sub_chinese_punctuations(_str)
     _str = shrink_repeated(_str, 4)
     return _str
-
-
-HALF2FULL = dict((i, i + 0xFEE0) for i in range(0x21, 0x7F))
-HALF2FULL[0x20] = 0x3000
-
-FULL2HALF = dict((i + 0xFEE0, i) for i in range(0x21, 0x7F))
-FULL2HALF[0x3000] = 0x20
-
-
-def turn_full_to_half_width(_str):
-    '''
-    Convert all ASCII characters to the full-width counterpart.
-    '''
-    return str(_str).translate(FULL2HALF)
-
-
-def turn_half_to_full_width(_str):
-    '''
-    Convert full-width characters to ASCII counterpart
-    '''
-    return str(_str).translate(HALF2FULL)
 
 
 """

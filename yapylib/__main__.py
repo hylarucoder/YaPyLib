@@ -2,7 +2,7 @@ import click
 
 from yapylib.logging import get_logger
 from yapylib.utils.http_utils import download_with_progress
-from yapylib.utils.macos_util import notify
+from yapylib.utils.mac_os_util import notify
 from yapylib.utils.sys_utils import check_setting_and_env
 
 

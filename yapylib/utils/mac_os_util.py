@@ -24,3 +24,20 @@ def notify(title, subtitle, info_text, delay=0, sound=False, userInfo={}):
         notification.setSoundName_("NSUserNotificationDefaultSoundName")
     notification.setDeliveryDate_(Foundation.NSDate.dateWithTimeInterval_sinceDate_(delay, Foundation.NSDate.date()))
     NSUserNotificationCenter.defaultUserNotificationCenter().scheduleNotification_(notification)
+
+
+"""
+下面的程序主要用于MacOS上一些程序的调用
+"""
+
+
+def open_image():
+    pass
+
+
+def open_url():
+    pass
+
+
+def open_video():
+    pass
