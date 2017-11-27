@@ -78,6 +78,14 @@ def clear_terminal():
     print(chr(27) + "[2J")
 
 
+import os, psutil, numpy as np
+
+
+def memory_usage():
+    process = psutil.Process(os.getpid())
+    return process.get_memory_info()[0] / float(2 ** 20)
+
+
 def restart_if_failed(func, max_tries, args=(), kwargs={}, secs=60, sleep=None):
     """
     https://github.com/lilydjwg/winterpy/blob/master/pylib/myutils.py
