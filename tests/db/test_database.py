@@ -44,6 +44,9 @@ class TestDatabase(object):
         res = self.db.query("select version();")
         assert 'PostgreSQL' in res[0][0]
 
+    def test_list_has_sequence(self):
+        assert False
+
     def test_query_file(self):
         assert False
 
@@ -53,6 +56,10 @@ class TestDatabase(object):
 
     def test_table_exists(self):
         assert self.db.table_exists('film_category')
+        assert False
+
+    def test_table_exists(self):
+        assert self.db.table_exists('films')
 
     def test_table_get_sequence_info(self):
         assert False

@@ -3,7 +3,6 @@ import os
 
 DATABASE_URL = os.environ.get('DATABASE_URL')
 
-
 class Database(object):
     """
     数据库
@@ -30,13 +29,12 @@ class Database(object):
     def __enter__(self):
         return self
 
-    def __exit__(self, exc, val, traceback):
+    def __exit__(self, exc , val , traceback):
         self.close()
 
     """
     ===> 针对表
     """
-
     def list_table_names(self):
         return inspect(self._engine).get_table_names()
 
@@ -47,7 +45,6 @@ class Database(object):
     """
     ===> 针对表中的序列
     """
-
     def table_has_sequence(self, table_name=None, seq_name=None):
         """
         :param table_name:
@@ -140,7 +137,6 @@ class Database(object):
     ===> 查询 增删改查
     ===> 查询语句
     """
-
     def query_single_value(self, query):
         """
         TODO: 查询
@@ -155,6 +151,12 @@ class Database(object):
         # 如果不加text的话,一般像pgsql这种对语法支持比较多的容易被
         cursor = self.db.execute(text(query), **params)
         return list(cursor)
+
+    def query(self, query):
+        """
+        TODO: 查询
+        """
+        return results
 
     def insert(self, query):
         """
@@ -215,7 +217,6 @@ class Database(object):
         TODO: 个人认为这玩意还是
         """
         pass
-
     """
     ===> 一些Helper方法
     """
