@@ -28,8 +28,7 @@ def get_all_words(filename):
         return filtered_words
 
 
-def get_all_file():
-    filename = "/Users/twocucao/Downloads/PersonOfInterested/"
+def get_all_file(filename):
     all_folders = [os.path.join(filename, folder) for folder in os.listdir(filename)]
     print(all_folders)
     all_files = []

@@ -17,7 +17,7 @@ def main():
     check_setting_and_env()
 
     download_with_progress(
-        "http://101.44.1.119/files/2043000006744998/down10.zol.com.cn/zhuyeliulan/57.0.2987.74_chrome_installer.exe",
+        "http://101.44.1.119/mio/2043000006744998/down10.zol.com.cn/zhuyeliulan/57.0.2987.74_chrome_installer.exe",
         "/Users/twocucao/Downloads/chrome.exe")
     notify("YaPyLib下载完毕", "精选美女小视频", "本条消息自带响声", sound=True)
 
