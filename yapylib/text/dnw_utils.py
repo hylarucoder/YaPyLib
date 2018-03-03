@@ -1,11 +1,12 @@
 import re
 from collections import Counter
+from pprint import pprint
 
 import numpy as np
 import pandas as pd
 from numpy import log
 
-from yapylib.text.transpose import shrink_online_rent
+from yapylib.text.transpose import shrink_online_rent, shrink_repeated, shrink_repeated4bilibili
 
 
 def dnw_4_normal(input_text):
@@ -25,7 +26,7 @@ def dnw_4_normal(input_text):
     min_count = 2  # 录取词语最小出现次数
     min_support = 4  # 录取词语最低支持度，1代表着随机组合
     min_s = 2  # 录取词语最低信息熵，越大说明越有可能独立成词
-    max_sep = 10  # 候选词语的最大字数
+    max_sep = 20  # 候选词语的最大字数
 
     # 为了方便调用，自定义了一个正则表达式的词典
     regexes = {}
@@ -98,22 +99,38 @@ def dnw_4_core(input_texts):
         cur_words = [cur_text[i:i + cur_len] for i in range(0, cur_text_len - cur_len)]
         freq.update(cur_words)
 
-    # Step 2. 过滤掉
-    # Step 3. 指定登录城市
+        # Step 2. 过滤掉
+        # Step 3. 指定登录城市
 
-    # Step 1
+        # Step 1
 
 
-def dnw_4_bilibili(input_text):
+def dnw_4_bilibili(danmukus):
     """
     针对Bilibili弹幕的新词发现算法
-    :param input_text:
+    弹幕的处理
+    1. 压缩重复率: eg 爱死这破站了 与 爱爱爱爱爱死这破站了
+    :param danmukus:
     :return:
     """
 
-    # 预处理, 去掉中文符号,应该没有人拿中文符号表情吧
-    input_text = shrink_online_rent(input_text)
-    return dnw_4_normal(input_text)
+    danmukus = list(map(shrink_repeated4bilibili, danmukus))
+    unrecord_word_length_min = 2
+    unrecord_word_length_max = 10
+    return dnw_4_normal("\n".join(danmukus))
+
+    # Step 1. 指定登陆词长度范围,计算词频
+    freq = Counter()
+    for idx, danmuku in enumerate(danmukus):
+        for cur_len in range(unrecord_word_length_min, unrecord_word_length_max + 1):
+            # 依次登录登陆词为cur_len的词
+            danmuku_len = len(danmuku)
+            danmuku_words = [danmuku[i:i + cur_len] for i in range(0, danmuku_len - cur_len)]
+            freq.update(danmuku_words)
+        if idx % 1000 == 0:
+            print(idx)
+
+    pprint(freq.most_common(100))
 
     pass
 

@@ -44,6 +44,7 @@ class FileReader(object):
         pass
 
     def info(self):
+        sum(1 for line in open('myfile.txt'))
         pass
 
     def read_items(self, sep="\n", compression=None):
@@ -67,3 +68,25 @@ class File(object):
 
 class FileTrans(object):
     pass
+
+
+def getlineno(path, mode, compression=None):
+    """
+    :param path:
+    :param mode:
+    :param compression:
+    :return:
+    fast count file number
+    """
+    # GZ Compression
+    if compression == 'gzip':
+        import gzip
+        f = gzip.open(path, mode)
+    # BZ Compression
+    elif compression == 'bz2':
+        import bz2
+        f = bz2.BZ2File(path, mode)
+    else:
+        f = open(path, mode, encoding="utf-8")
+
+    return sum(1 for line in f)

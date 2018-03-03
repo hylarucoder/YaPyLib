@@ -121,14 +121,50 @@ def sub_chinese_punctuations(_str):
     return _str
 
 
-def shrink_repeated(_str, max_times=3):
+def shrink_repeated4bilibili(_str, word_len=20):
     """
     :param _str:
     :param max_times:
-    将重复 max_times 次以上的 字符串删减为 max_times 次
+    :param word_len:
     :return:
     """
-    pat = r'(.)\1{%d,}' % max_times
+
+    _str = re.sub(r"\s+", " ", _str)
+    for i in range(1, word_len + 1):
+        if i <= 3:
+            max_times = 3
+        elif i <= 5:
+            max_times = 2
+        else:
+            max_times = 1
+        _str = shrink_repeated_with_len(_str, max_times=max_times, word_len=i)
+    return _str
+
+
+def shrink_repeated(_str, max_times=3, word_len=20):
+    """
+    :param _str:
+    :param max_times:
+    :param word_len:
+    :return:
+    """
+
+    _str = re.sub(r"\s+", " ", _str)
+    for i in range(1, word_len + 1):
+        _str = shrink_repeated_with_len(_str, max_times=max_times, word_len=i)
+    return _str
+
+
+def shrink_repeated_with_len(_str, max_times=3, word_len=3):
+    """
+    :param _str:
+    :param max_times:
+    :param word_len:
+    n 为支持的字符串长度
+    n 为 3 ,max_times 为3的时候 周杰伦周杰伦周杰伦周杰伦周杰伦 -> 周杰伦周杰伦周杰伦
+    :return:
+    """
+    pat = r'(' + r'.' * word_len + r')\1{%d,}' % max_times
     repl = r''.join([r'\1' for i in range(max_times)])
     return re.sub(pat, repl, _str)
 

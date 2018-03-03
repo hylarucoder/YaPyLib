@@ -1,7 +1,7 @@
 import subprocess
 
 
-def simple_command(cmd):
+def simple_command(cmd, timeout=5):
     """
     :param cmd:
     :return:
@@ -9,7 +9,7 @@ def simple_command(cmd):
     """
     if isinstance(cmd, list):
         cmd = " ".join(cmd)
-    out_bytes = subprocess.check_output(cmd, shell=True, timeout=5, stderr=subprocess.STDOUT)
+    out_bytes = subprocess.check_output(cmd, shell=True, timeout=timeout, stderr=subprocess.STDOUT)
     if out_bytes:
         out_text = out_bytes.decode('utf-8')
         return out_text
