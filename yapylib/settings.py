@@ -7,12 +7,15 @@ import os
 import yaml
 import jinja2
 from jinja2 import Environment
+from dotenv import load_dotenv
+
+load_dotenv()
 
 ROOT_DIR = os.path.dirname(os.path.dirname(os.path.realpath(__file__)))
 CURRENT_DIR = os.path.curdir
 LOGS_FILE = os.path.expanduser("~/.yapylib.log")
 TEMPLATE_DIR = os.path.join(ROOT_DIR, 'yapylib/templates')
-config_file = os.path.expanduser("~/.yapylib.yaml")
+config_file = os.path.expanduser("~/.yapylib.yml")
 if not os.path.expanduser(config_file):
     raise Exception("请设置配置文件")
 else:
