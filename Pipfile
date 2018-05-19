@@ -4,38 +4,46 @@ verify_ssl = true
 name = 'pypi'
 
 [packages]
-
-Pillow = "*"
-PyYAML = "*"
-SQLAlchemy = "*"
-beautifulsoup4 = "*"
 click = "*"
-coverage = "*"
-lxml = "*"
-numpy = "*"
+faker = "*"
+psutil = "*"
+python-dotenv = "*"
+pyyaml = "*"
+requests = "*"
+voluptuous = "*"
+ipython = "*"
+ipdb = "*"
+jinja2 = "*"
+werkzeug = "*"
+itsdangerous = "*"
+flask = "*"
+
+xlrd = "*"
 openpyxl = "*"
 pandas = "*"
-parsel = "*"
-psutil = "*"
-psycopg2 = "*"
-pyOpenSSL = "*"
+
 pymongo = "*"
-requests = "*"
 sqlalchemy = "*"
-tablib = "*"
-urllib3 = "*"
-xlrd = "*"
+psycopg2 = "*"
+
+parsel = "*"
+beautifulsoup4 = "*"
+lxml = "*"
+numpy = "*"
+
+pillow = "*"
 
 [dev-packages]
+twine = "*"
+tox = "*"
+sphinx = "*"
+fabric = "*"
 coverage = "*"
 flake8 = "*"
 ipdb = "*"
 pytest = "*"
 pytest-sugar = "*"
-"yapylib" = {path = ".", editable = true}
 
 [requires]
 python_version = '3.6'
 python_full_version = '3.6.5'
-
-

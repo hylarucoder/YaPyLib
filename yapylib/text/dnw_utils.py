@@ -4,7 +4,6 @@ from pprint import pprint
 
 import numpy as np
 import pandas as pd
-from numpy import log
 
 from yapylib.text.transpose import shrink_online_rent, shrink_repeated, shrink_repeated4bilibili
 
