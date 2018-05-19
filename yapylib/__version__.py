@@ -5,5 +5,5 @@ __version__ = '0.0.1'
 __build__ = 0x021801
 __author__ = 'twocucao'
 __author_email__ = 'twocucao@gmail.com'
-__license__ = 'Apache 2.0'
-__copyright__ = 'Copyright 2017 twocucao'
+__license__ = 'MIT'
+__copyright__ = 'Copyright 2017-2018 twocucao'

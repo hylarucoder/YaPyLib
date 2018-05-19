@@ -1,5 +1,5 @@
 import click
-import pytest
+
 from yapylib.cli import pass_context
 from yapylib.tools.yahttpserver import serve_yahttpserver
 

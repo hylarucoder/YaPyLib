@@ -12,12 +12,22 @@ from PIL import Image
 
 
 def image_url_to_string(url):
+    """
+    通过URL拿到图片,然后进行识别
+    :param url:
+    :return:
+    """
     from pytesseract import pytesseract
     image = Image.open(io.BytesIO(requests.get(url, timeout=20).content))
     return pytesseract.image_to_string(image)
 
 
 def image_to_string(path):
+    """
+    通过PATH拿到图片,然后进行识别
+    :param url:
+    :return:
+    """
     from pytesseract import pytesseract
     return pytesseract.image_to_string(Image.open(path))
 

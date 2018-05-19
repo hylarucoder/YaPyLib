@@ -3,7 +3,7 @@ import click
 from yapylib.cli import pass_context
 
 
-@click.command('rename', short_help='rename files by expression')
+@click.command('rename', short_help='rename mio by expression')
 @click.argument('pathname', required=True, type=click.STRING)
 @click.argument('operate', required=True, type=click.STRING)
 @pass_context

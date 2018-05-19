@@ -1,6 +1,6 @@
 from math import radians, cos, sin, asin, sqrt
 
-from yapylib.gis.coord_transform_utils import EPSGProjection, bd09togcj02, gcj02towgs84, bd09towgs84
+from yapylib.gis.coord_transform_utils import EPSGProjection, gcj02towgs84, bd09towgs84
 
 
 def haversine(lon1, lat1, lon2, lat2, default=EPSGProjection.WGS84):

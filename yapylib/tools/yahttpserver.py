@@ -26,8 +26,8 @@ from io import BytesIO
 
 class SimpleHTTPRequestHandler(http.server.BaseHTTPRequestHandler):
     """Simple HTTP request handler with GET/HEAD/POST commands.
-    This serves files from the current directory and any of its
-    subdirectories.  The MIME type for files is determined by
+    This serves mio from the current directory and any of its
+    subdirectories.  The MIME type for mio is determined by
     calling the .guess_type() method. And can reveive file uploaded
     by client.
     The GET/HEAD/POST requests are identical except that the HEAD
@@ -146,7 +146,7 @@ class SimpleHTTPRequestHandler(http.server.BaseHTTPRequestHandler):
                 return self.list_directory(path)
         ctype = self.guess_type(path)
         try:
-            # Always read in binary mode. Opening files in text mode may cause
+            # Always read in binary mode. Opening mio in text mode may cause
             # newline translations, making the actual size of the content
             # transmitted *less* than the content-length!
             f = open(path, 'rb')

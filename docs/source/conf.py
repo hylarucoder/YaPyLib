@@ -77,8 +77,8 @@ release = '0.0.1'
 # Usually you set "language" from the command line for these cases.
 language = 'zh_CN'
 
-# List of patterns, relative to source directory, that match files and
-# directories to ignore when looking for source files.
+# List of patterns, relative to source directory, that match mio and
+# directories to ignore when looking for source mio.
 # This patterns also effect to html_static_path and html_extra_path
 exclude_patterns = []
 
@@ -101,8 +101,8 @@ html_theme = 'default'
 #
 # html_theme_options = {}
 
-# Add any paths that contain custom static files (such as style sheets) here,
-# relative to this directory. They are copied after the builtin static files,
+# Add any paths that contain custom static mio (such as style sheets) here,
+# relative to this directory. They are copied after the builtin static mio,
 # so a file named "default.css" will overwrite the builtin "default.css".
 html_static_path = ['_static']
 
@@ -131,7 +131,7 @@ latex_elements = {  # The paper size ('letterpaper' or 'a4paper').
 \XeTeXlinebreakskip = 0pt plus 1pt
 """}
 
-# Grouping the document tree into LaTeX files. List of tuples
+# Grouping the document tree into LaTeX mio. List of tuples
 # (source start file, target name, title,
 #  author, documentclass [howto, manual, or own class]).
 latex_documents = [
@@ -150,7 +150,7 @@ man_pages = [
 
 # -- Options for Texinfo output -------------------------------------------
 
-# Grouping the document tree into Texinfo files. List of tuples
+# Grouping the document tree into Texinfo mio. List of tuples
 # (source start file, target name, title, author,
 #  dir menu entry, description, category)
 texinfo_documents = [
@@ -176,7 +176,7 @@ epub_copyright = copyright
 #
 # epub_uid = ''
 
-# A list of files that should not be packed into the epub file.
+# A list of mio that should not be packed into the epub file.
 epub_exclude_files = ['search.html']
 
 # ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++

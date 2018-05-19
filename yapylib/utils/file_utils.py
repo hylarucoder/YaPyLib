@@ -97,3 +97,31 @@ def unzip_file():
     pass
 
 
+def unzip_gbk_file(origin, target=None):
+    """
+    author: YUCOAT(yucoat^http://yucoat.com)
+    modified by: twocucao
+
+    用于解压windows传到mac文件上面的编码问题
+    """
+    import os
+    import zipfile
+    import click
+    if not target:
+        target = "./{}".format(origin.split(".zip")[0])
+    if not os.path.exists(target):
+        os.makedirs(target)
+
+    zip_obj = zipfile.ZipFile(origin, 'r')
+    for name in zip_obj.namelist():
+        target_file_name = "{}/{}".format(target, name.encode('cp437').decode('gb18030'))
+        target_file_folder = os.path.dirname(target_file_name)
+        if (not os.path.exists(target_file_folder)) and target_file_folder:
+            os.makedirs(target_file_folder)
+        content = zip_obj.read(name)
+        if not os.path.exists(target_file_name):
+            tmp = open(target_file_name, 'wb')
+            tmp.write(content)
+            tmp.close()
+        print('Exacting %s ... done!' % (target_file_name))
+    zip_obj.close()
