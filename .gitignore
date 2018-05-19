@@ -4,6 +4,7 @@ media/*
 # Vagrant
 .vagrant
 vagrant_ansible_inventory_default
+.env
 
 
 local_settings.py

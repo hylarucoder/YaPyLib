@@ -1,8 +1,7 @@
 # -*- coding: utf-8 -*-
-import json
-import requests
 import math
-import os
+
+import requests
 
 from yapylib.settings import AMAP_AK
 
