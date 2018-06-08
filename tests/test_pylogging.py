@@ -1,4 +1,3 @@
-# coding=utf-8
 from yapylib.logging import get_logger
 
 

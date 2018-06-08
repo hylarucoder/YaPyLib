@@ -1,4 +1,5 @@
 .vscode
+.pytest_cache
 yapylib.log*
 staticfiles/
 media/*

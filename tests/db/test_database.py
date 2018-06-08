@@ -4,7 +4,8 @@ from yapylib.db.database import Database
 
 class TestDatabase(object):
     def setup_class(self):
-        self.db = Database("postgresql://twocucao:pass123@localhost:5432/dvdrental")
+        self.db = Database(
+            "postgresql://twocucao:pass123@localhost:5432/dvdrental")
 
     def setup_method(self):
         print("setup_method called for every method")

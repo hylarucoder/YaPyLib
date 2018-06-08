@@ -17,20 +17,16 @@ jinja2 = "*"
 werkzeug = "*"
 itsdangerous = "*"
 flask = "*"
-
 xlrd = "*"
 openpyxl = "*"
 pandas = "*"
-
 pymongo = "*"
 sqlalchemy = "*"
 psycopg2 = "*"
-
 parsel = "*"
 beautifulsoup4 = "*"
 lxml = "*"
 numpy = "*"
-
 pillow = "*"
 
 [dev-packages]
@@ -43,6 +39,8 @@ flake8 = "*"
 ipdb = "*"
 pytest = "*"
 pytest-sugar = "*"
+pylint = "*"
+"autopep8" = "*"
 
 [requires]
 python_version = '3.6'

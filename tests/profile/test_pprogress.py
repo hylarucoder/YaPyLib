@@ -1,13 +1,9 @@
 # coding=utf-8
 import time
-
 from yapylib.profile.pprogress import GeneratorProgressBar
-from yapylib.profile.ptime import timethis
-from yapylib.logging import get_logger
 
 
 def process(a):
-    import time
     time.sleep(1)
     return a
 
@@ -15,8 +11,8 @@ def process(a):
 def test_GeneratorProgressBar():
     def process_tasks_gene(tasks):
         for task in tasks:
-            v = process(task)
-            yield v
+            task_result = process(task)
+            yield task_result
 
     tasks = [1, 2, 3]
     gene = process_tasks_gene(tasks)
