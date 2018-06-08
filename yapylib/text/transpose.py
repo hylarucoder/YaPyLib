@@ -1,5 +1,3 @@
-# !/usr/bin/env python
-# -*- coding: utf-8 -*-
 """
 字符串处理程序
 1. 删除,替换,查找
@@ -13,10 +11,9 @@
 @Desc: 针对其他的一些中文字符和英文字符,以及混合中英文字符进行一些简单的提取操作.
 
 """
-
+from yapylib.settings import JINJA2_ENV
 import re
 import string
-
 from yapylib.text.regexes import PT_CHINESE_AND_NUMBER, PT_CHINESE_SETENCE
 from yapylib.text.utils import is_empty
 
@@ -46,11 +43,6 @@ def simple_render(content, context):
     """
     t = SimpleTemplate(content)
     return t.safe_substitute(context)
-
-
-import jinja2
-
-from yapylib.settings import JINJA2_ENV
 
 
 def render_template(tpl, **context):
@@ -89,7 +81,8 @@ def filter_chinese_characters(_str):
 
 
 def filter_chinese_punctuations(_str):
-    new_str = re.sub(r"[\s+.!/_,$%^*(\"']+|[+—！，。？、~@#￥%…&*（）：；《》“”()»〔〕-]+", "", _str)
+    new_str = re.sub(
+        r"[\s+.!/_,$%^*(\"']+|[+—！，。？、~@#￥%…&*（）：；《》“”()»〔〕-]+", "", _str)
     return new_str
 
 
@@ -228,11 +221,14 @@ def full_width_to_half_width(_str):
     return _str
 
 
-chinese_digits_mapping = {u'零': 0, u'一': 1, u'二': 2, u'三': 3, u'四': 4, u'五': 5, u'六': 6, u'七': 7, u'八': 8, u'九': 9,
+chinese_digits_mapping = {u'零': 0, u'一': 1, u'二': 2, u'三': 3, u'四': 4, u'五': 5,
+                          u'六': 6, u'七': 7, u'八': 8, u'九': 9,
                           u'十': 10, u'百': 100,
                           u'千': 1000, u'万': 10000,
-                          u'０': 0, u'１': 1, u'２': 2, u'３': 3, u'４': 4, u'５': 5, u'６': 6, u'７': 7, u'８': 8, u'９': 9,
-                          u'壹': 1, u'贰': 2, u'叁': 3, u'肆': 4, u'伍': 5, u'陆': 6, u'柒': 7, u'捌': 8, u'玖': 9, u'拾': 10,
+                          u'０': 0, u'１': 1, u'２': 2, u'３': 3, u'４': 4, u'５': 5,
+                          u'６': 6, u'７': 7, u'８': 8, u'９': 9,
+                          u'壹': 1, u'贰': 2, u'叁': 3, u'肆': 4, u'伍': 5, u'陆': 6,
+                          u'柒': 7, u'捌': 8, u'玖': 9, u'拾': 10,
                           u'佰': 100,
                           u'仟': 1000, u'萬': 10000,
                           u'亿': 100000000}

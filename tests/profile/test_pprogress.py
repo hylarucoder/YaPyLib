@@ -3,12 +3,12 @@ import time
 from yapylib.profile.pprogress import GeneratorProgressBar
 
 
-def process(a):
+def process(value):
     time.sleep(1)
-    return a
+    return value
 
 
-def test_GeneratorProgressBar():
+def test_generator_progress_bar():
     def process_tasks_gene(tasks):
         for task in tasks:
             task_result = process(task)
