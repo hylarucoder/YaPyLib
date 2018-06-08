@@ -86,7 +86,7 @@ mail_content = {
 def test_mail_util():
     attachments = [
     ]
-    flag = Mail(mail_type=MAIL_TYPE_HTML).setContent(mail_content["title"], mail_content).attach_files(
-        attachments).send()
+    flag = Mail(mail_type=MAIL_TYPE_HTML).setContent(
+        mail_content["title"], mail_content).attach_files(attachments).send()
 
     assert flag

@@ -27,6 +27,16 @@ def is_json(_str):
     return True
 
 
+CO_GENERATOR = 0x0020
+
+
+def is_generator(f):
+    """ Return True if a function is a generator.
+    """
+    isgen = (f.__code__.co_flags & CO_GENERATOR) != 0
+    return isgen
+
+
 def is_html(_str):
     try:
         from bs4 import BeautifulSoup

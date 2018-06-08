@@ -1,8 +1,6 @@
 # coding=utf-8
 import time
-
 from yapylib.profile.ptime import timethis
-from yapylib.logging import get_logger
 
 
 @timethis

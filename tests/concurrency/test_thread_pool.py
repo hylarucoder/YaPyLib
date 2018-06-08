@@ -32,6 +32,7 @@ def test_simple_thread_pool():
                 time.sleep(0.3)
                 print('out_item', out_item)
             except Exception as e:
+                print(e)
                 break
         print("<== 消费者: post_process_item_func 我的剧情已落幕 我的爱恨已入土")
 

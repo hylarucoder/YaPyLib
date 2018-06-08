@@ -1,5 +1,3 @@
-import pytest
-
 from yapylib.utils.tree_util import get_level
 
 

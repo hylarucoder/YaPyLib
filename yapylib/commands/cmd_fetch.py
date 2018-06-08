@@ -4,7 +4,7 @@ import click
 import parsel
 from yapylib.cli import pass_context
 from yapylib.utils.type_util import is_html, is_json
-from yapylib.wrapped.requests import session
+import requests
 
 
 @click.command('fetch', short_help='fetch a url and parse response.')
@@ -14,7 +14,7 @@ def cli(ctx, url):
     """使用REQUESTS请求某个地址,跳转到IPython便于下一步解析."""
     ctx.log('正在请求网址 %s', url)
     from IPython import embed
-
+    session = requests.session()
     res = session.get(url)
     # 验证码判断
     content = res.text
