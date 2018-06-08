@@ -1,6 +1,5 @@
 import logging
 from logging.config import dictConfig
-import os
 
 from yapylib.settings import USE_COLORS, DEBUG, LOGS_FILE
 
@@ -69,13 +68,7 @@ LOGGING = {  # dictConfig for output stream and file logging
 
 dictConfig(LOGGING)
 
-import logging
-
 
 def get_logger(name="common"):
-    """
-    :param name:
-    :return:
-    """
     logger = logging.getLogger(name)
     return logger

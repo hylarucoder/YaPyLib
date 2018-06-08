@@ -5,7 +5,7 @@ from pprint import pprint
 import numpy as np
 import pandas as pd
 
-from yapylib.text.transpose import shrink_online_rent, shrink_repeated, shrink_repeated4bilibili
+from yapylib.text.transpose import shrink_repeated4bilibili
 
 
 def dnw_4_normal(input_text):
@@ -16,7 +16,8 @@ def dnw_4_normal(input_text):
     :return:
     """
     # 定义要去掉的标点字
-    drop_dict = [u'，', u'\n', u'。', u'、', u'：', u'(', u')', u'[', u']', u'.', u',', u' ', u'\u3000', u'”', u'“', u'？',
+    drop_dict = [u'，', u'\n', u'。', u'、', u'：', u'(', u')',
+                 u'[', u']', u'.', u',', u' ', u'\u3000', u'”', u'“', u'？',
                  u'?',
                  u'！', u'‘', u'’', u'…']
     for i in drop_dict:  # 去掉标点字
@@ -49,12 +50,13 @@ def dnw_4_normal(input_text):
         t[m - 1] = t[m - 1][t[m - 1] > min_count]  # 最小次数筛选
         tt = t[m - 1][:]
         for k in range(m - 1):
-            qq = np.array(list(map(lambda ms: tsum * t[m - 1][ms] / t[m - 2 - k][ms[:m - 1 - k]] / t[k][ms[m - 1 - k:]],
+            qq = np.array(list(map(lambda ms: tsum * t[m - 1][ms] / t[m - 2 - k][ms[:m - 1 - k]] / t[k][ms[m - 1 - k:]],  # noqa
                                    tt.index))) > min_support  # 最小支持度筛选。
             tt = tt[qq]
         rt.append(tt.index)
 
     def cal_S(sl):  # 信息熵计算函数
+        from math import log
         return -((sl / sl.sum()).apply(log) * sl / sl.sum()).sum()
 
     for i in range(2, max_sep + 1):
@@ -65,8 +67,10 @@ def dnw_4_normal(input_text):
         pp = pd.DataFrame(pp).set_index(1).sort_index()  # 先排序，这个很重要，可以加快检索速度
         index = np.sort(np.intersect1d(rt[i - 2], pp.index))  # 作交集
         # 下面两句分别是左邻和右邻信息熵筛选
-        index = index[np.array(list(map(lambda s: cal_S(pd.Series(pp[0][s]).value_counts()), index))) > min_s]
-        rt[i - 2] = index[np.array(list(map(lambda s: cal_S(pd.Series(pp[2][s]).value_counts()), index))) > min_s]
+        index = index[np.array(
+            list(map(lambda s: cal_S(pd.Series(pp[0][s]).value_counts()), index))) > min_s]  # noqa
+        rt[i - 2] = index[np.array(
+            list(map(lambda s: cal_S(pd.Series(pp[2][s]).value_counts()), index))) > min_s]  # noqa
 
     # 下面都是输出前处理
     for i in range(len(rt)):
@@ -92,10 +96,11 @@ def dnw_4_core(input_texts):
     # Step 1. 指定登陆词长度范围,计算词频
     freq = Counter()
     cur_text = input_texts
-    for cur_len in range(unrecord_word_length_min, unrecord_word_length_max + 1):
+    for cur_len in range(unrecord_word_length_min, unrecord_word_length_max + 1):  # noqa
         # 依次登录登陆词为cur_len的词
         cur_text_len = len(cur_text)
-        cur_words = [cur_text[i:i + cur_len] for i in range(0, cur_text_len - cur_len)]
+        cur_words = [cur_text[i:i + cur_len]
+                     for i in range(0, cur_text_len - cur_len)]
         freq.update(cur_words)
 
         # Step 2. 过滤掉
@@ -121,10 +126,11 @@ def dnw_4_bilibili(danmukus):
     # Step 1. 指定登陆词长度范围,计算词频
     freq = Counter()
     for idx, danmuku in enumerate(danmukus):
-        for cur_len in range(unrecord_word_length_min, unrecord_word_length_max + 1):
+        for cur_len in range(unrecord_word_length_min, unrecord_word_length_max + 1):  # noqa
             # 依次登录登陆词为cur_len的词
             danmuku_len = len(danmuku)
-            danmuku_words = [danmuku[i:i + cur_len] for i in range(0, danmuku_len - cur_len)]
+            danmuku_words = [danmuku[i:i + cur_len]
+                             for i in range(0, danmuku_len - cur_len)]
             freq.update(danmuku_words)
         if idx % 1000 == 0:
             print(idx)

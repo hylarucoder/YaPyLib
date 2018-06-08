@@ -4,7 +4,7 @@ from yapylib.utils.date_util import fmt_cur_date_time
 from yapylib.utils.mail_utils import Mail, MAIL_TYPE_HTML
 from yapylib.utils.sys_utils import get_internal_ip
 
-mail_content = {
+mail_template = {
     "title": "[爬虫][某潜力数据][某网]小时报 {}".format(fmt_cur_date_time()),
     "summary_title": "[某网]小时报",
     "summary_introduction": "[某网]小时报简单报到",
@@ -21,7 +21,8 @@ mail_content = {
     "github_url": "https://github.com/twocucao",
     "private_email": "twocucao@gmail.com",
     "company_email": "twocucao@gmail.com",
-    "introduction": """,ROR程序员,现专攻Python方向,Python Web,爬虫,数据分析与数据仓库. 现在某潜力数据做爬虫工程师兼数据挖掘工程师. 如果有技术问题,请及时联系我.""",
+    "introduction": "ROR程序员, 现专攻Python方向, Python Web, 爬虫, 数据分析与数据仓库." +
+    "现在某潜力数据做爬虫工程师兼数据挖掘工程师. 如果有技术问题, 请及时联系我.",
     "sections": [
         {
             "title": "节点状态",
@@ -87,6 +88,6 @@ def test_mail_util():
     attachments = [
     ]
     flag = Mail(mail_type=MAIL_TYPE_HTML).setContent(
-        mail_content["title"], mail_content).attach_files(attachments).send()
+        mail_template["title"], mail_template).attach_files(attachments).send()
 
     assert flag

@@ -4,7 +4,7 @@ from yapylib.db.database import Database
 
 class TestDatabase(object):
     def setup_class(self):
-        self.db = Database(
+        self.database = Database(
             "postgresql://twocucao:pass123@localhost:5432/dvdrental")
 
     def setup_method(self):
@@ -38,11 +38,11 @@ class TestDatabase(object):
         assert False
 
     def test_list_table_names(self):
-        assert 'film_category' in self.db.list_table_names()
+        assert 'film_category' in self.database.list_table_names()
 
     def test_query(self):
         print("""assert 'PostgreSQL' in res[0][0]""")
-        res = self.db.query("select version();")
+        res = self.database.query("select version();")
         assert 'PostgreSQL' in res[0][0]
 
     def test_list_has_sequence(self):
@@ -52,15 +52,12 @@ class TestDatabase(object):
         assert False
 
     def test_query_single_value(self):
-        res = self.db.query_single_value("select version();")
+        res = self.database.query_single_value("select version();")
         assert 'PostgreSQL' in res
 
     def test_table_exists(self):
-        assert self.db.table_exists('film_category')
+        assert self.database.table_exists('film_category')
         assert False
-
-    def test_table_exists(self):
-        assert self.db.table_exists('films')
 
     def test_table_get_sequence_info(self):
         assert False

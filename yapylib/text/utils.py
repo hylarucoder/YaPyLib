@@ -16,7 +16,6 @@ string_util 主要处理 比较短的文本,长文本的处理交给text_util
 提取请求url中的中文内容.
 
 """
-import re
 
 
 def is_blank(_str):

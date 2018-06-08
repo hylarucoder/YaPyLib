@@ -1,4 +1,3 @@
-from yapylib.utils.random_util import uuid
 
 
 def test_random_ua():
