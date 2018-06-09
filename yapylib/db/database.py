@@ -3,6 +3,7 @@ import os
 
 DATABASE_URL = os.environ.get('DATABASE_URL')
 
+
 class Database(object):
     """
     数据库
@@ -29,12 +30,13 @@ class Database(object):
     def __enter__(self):
         return self
 
-    def __exit__(self, exc , val , traceback):
+    def __exit__(self, exc, val, traceback):
         self.close()
 
     """
     ===> 针对表
     """
+
     def list_table_names(self):
         return inspect(self._engine).get_table_names()
 
@@ -45,13 +47,14 @@ class Database(object):
     """
     ===> 针对表中的序列
     """
+
     def table_has_sequence(self, table_name=None, seq_name=None):
         """
         :param table_name:
         :param seq_name:
         :return:
         """
-        query = """SELECT EXISTS (SELECT 1 FROM pg_class 
+        query = """SELECT EXISTS (SELECT 1 FROM pg_class
                 WHERE upper(relkind)='S' AND relname='%s')""" % seq_name
         return self.query_single_value(query)
 
@@ -76,8 +79,8 @@ class Database(object):
         :return:
         """
         query = """
-          SELECT "{pk_name}" 
-          FROM {table} 
+          SELECT "{pk_name}"
+          FROM {table}
           WHERE mod("{pk_name}" , {increment})={mod_result}
           ORDER BY "{pk_name}" DESC LIMIT 1
           """.format(pk_name=pk_name,
@@ -97,7 +100,7 @@ class Database(object):
         :param value:
         :return:
         """
-        return self.query("select setval('\"%s\"', %d, True)" % (seq_name, value))
+        return self.query("select setval('\"%s\"', %d, True)" % (seq_name, value))  # noqa
 
     def _get_current_sequence_value(self, seq_name):
         """
@@ -115,7 +118,8 @@ class Database(object):
             increment = self._guess_sequence_params(seq_name)
             max_value = self._get_max_row_id(seq_name)
             if first_value > 1:
-                self._set_current_sequence_value(seq_name, first_value - increment)
+                self._set_current_sequence_value(
+                    seq_name, first_value - increment)
             current_value = self._get_current_sequence_value(seq_name)
             sequence_info[seq_name] = {
                 'table_name': table,
@@ -137,6 +141,7 @@ class Database(object):
     ===> 查询 增删改查
     ===> 查询语句
     """
+
     def query_single_value(self, query):
         """
         TODO: 查询
@@ -156,6 +161,7 @@ class Database(object):
         """
         TODO: 查询
         """
+        results = query
         return results
 
     def insert(self, query):

@@ -5,7 +5,6 @@ import subprocess
 import sys
 from codecs import open
 from shutil import rmtree
-
 from setuptools import setup, Command
 from yapylib import __version__
 
@@ -23,16 +22,20 @@ ENTRY_POINTS = {
     ]
 }
 
-# install exactly the locked version to keep sync between different envs
-REQUIRED = list(
-    map(lambda x: x.split(';')[0],
-        filter(lambda x: x.strip() != '' and '==' in x,
-               subprocess.check_output(['pipenv', 'lock', '-r']).decode().split('\n'))), )
+
+if 'develop' in sys.argv:
+    REQUIRED = []
+else:
+    REQUIRED = list(
+        map(lambda x: x.split(';')[0],
+            filter(lambda x: x.strip() != '' and '==' in x,
+                   subprocess.check_output(['pipenv', 'lock', '-r'])
+                   .decode().split('\n'))), )
 
 # The rest you shouldn't have to touch too much :)
 # ------------------------------------------------
 # Except, perhaps the License and Trove Classifiers!
-# If you do change the License, remember to change the Trove Classifier for that!
+# If you do change the License, remember to change the Trove Classifier for that! # noqa
 
 here = os.path.abspath(os.path.dirname(__file__))
 
@@ -75,7 +78,8 @@ class UploadCommand(Command):
             pass
 
         self.status('Building Source and Wheel (universal) distribution…')
-        os.system('{0} setup.py sdist bdist_wheel --universal'.format(sys.executable))
+        os.system(
+            '{0} setup.py sdist bdist_wheel --universal'.format(sys.executable))  # noqa
 
         self.status('Uploading the package to PyPi via Twine…')
         os.system('twine upload dist/*')
