@@ -14,10 +14,11 @@
 
 > 感谢开源社区人的无私奉献
 
-本项目特别感谢以下人，我经常阅读你们的代码。本项目也借鉴了一部分你们的代码
+本项目特别感谢以下人与项目，我经常阅读你们的代码。本项目也借鉴了一部分你们的代码
 
  - https://github.com/lilydjwg
  - https://github.com/dongweiming
+ - https://github.com/pypa/pipenv
 
 ## 模块
 

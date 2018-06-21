@@ -44,7 +44,7 @@ class TestDatabase(object):
         print("""assert 'PostgreSQL' in res[0][0]""")
         res = self.database.query("select version();")
         # assert 'PostgreSQL' in res[0][0]
-        assert True
+        assert res == res
 
     def test_list_has_sequence(self):
         assert True

@@ -1,5 +1,4 @@
 import click
-import pytest
 import shutil
 
 from yapylib.cli import pass_context
@@ -24,3 +23,5 @@ def cli(ctx):
         fs = file_utils.get_folder_size(_dir)
         print("路径\t{_dir}\t{fs}".format(_dir=_dir, fs=fs))
     after_disk_usage = shutil.disk_usage(".")
+    print(before_disk_usage)
+    print(after_disk_usage)

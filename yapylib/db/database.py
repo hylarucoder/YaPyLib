@@ -157,13 +157,6 @@ class Database(object):
         cursor = self.db.execute(text(query), **params)
         return list(cursor)
 
-    def query(self, query):
-        """
-        TODO: 查询
-        """
-        results = query
-        return results
-
     def insert(self, query):
         """
         TODO: 插入

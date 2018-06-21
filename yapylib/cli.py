@@ -1,65 +1,156 @@
-"""
-入口
-"""
-
 import os
 import sys
 import click
-from yapylib.utils.app_utils import set_crash_on_ipdb
 
-CONTEXT_SETTINGS = dict(auto_envvar_prefix='YAPYLIB')
+from click_didyoumean import DYMCommandCollection
+import click_completion
+import crayons
 
+from yapylib.cmd.core import format_help
+from .__version__ import __version__
 
-class Context(object):
-    def __init__(self):
-        self.verbose = False
-        self.home = os.getcwd()
+# from . import settings
 
-    def log(self, msg, *args):
-        """Logs a message to stderr."""
-        if args:
-            msg %= args
-        click.echo(msg, file=sys.stderr)
+click_completion.init()
 
-    def vlog(self, msg, *args):
-        """Logs a message to stderr only if verbose is enabled."""
-        if self.verbose:
-            self.log(msg, *args)
+CONTEXT_SETTINGS = dict(
+    help_option_names=['-h', '--help'],
+)
 
 
-pass_context = click.make_pass_decorator(Context, ensure=True)
+class YaPyLibGroup(click.Group):
 
-cmd_folder = os.path.join(os.path.dirname(__file__), 'commands')
+    def get_help_option(self, ctx):
+        help_options = self.get_help_option_names(ctx)
 
+        def show_help(ctx, param, value):
+            if value and not ctx.resilient_parsing:
+                if not ctx.invoked_subcommand:
+                    click.echo(format_help(ctx.get_help()))
+                else:
+                    click.echo(ctx.get_help(), color=ctx.color)
+                ctx.exit()
 
-class YaPyLibCLI(click.MultiCommand):
-    def list_commands(self, ctx):
-        rv = []
-        for filename in os.listdir(cmd_folder):
-            if filename.endswith('.py') and \
-                    filename.startswith('cmd_'):
-                rv.append(filename[4:-3])
-        rv.sort()
-        return rv
-
-    def get_command(self, ctx, name):
-        try:
-            if sys.version_info[0] == 2:
-                name = name.encode('ascii', 'replace')
-            mod = __import__('yapylib.commands.cmd_' + name,
-                             None, None, ['cli'])
-        except ImportError:
-            return
-        return mod.cli
+        return click.Option(help_options,
+                            is_flag=True,
+                            is_eager=True,
+                            expose_value=False,
+                            callback=show_help,
+                            help='Show this message and exit.',
+                            )
 
 
-@click.command(cls=YaPyLibCLI, context_settings=CONTEXT_SETTINGS)
+def setup_verbose(ctx, param, value):
+    if value:
+        import logging
+        logging.getLogger('requests').setLevel(logging.INFO)
+    return value
+
+
+@click.group(cls=YaPyLibGroup,
+             invoke_without_command=True,
+             context_settings=CONTEXT_SETTINGS,
+             )
 @click.option('-v', '--verbose', is_flag=True,
               help='Enables verbose mode.')
-@pass_context
+@click.version_option(
+    prog_name=crayons.white('yapylib', bold=True), version=__version__
+)
+@click.pass_context
 def cli(ctx, verbose):
     """
     The Must-Have Utils For Every Pythonista Since 2016.
     """
-    set_crash_on_ipdb(True)
-    ctx.verbose = verbose
+    # ctx.verbose = verbose
+    click.echo(format_help(ctx.get_help()))
+
+
+@click.command(
+    short_help="unzip gbk package",
+    context_settings=dict(ignore_unknown_options=True, allow_extra_args=True),
+)
+def unzip():
+    click.echo("is unzipping gbk")
+    pass
+
+
+@click.command(
+    short_help="execute python and then enter ipython",
+    context_settings=dict(ignore_unknown_options=True, allow_extra_args=True),
+)
+def ishell():
+    click.echo("is executing")
+    pass
+
+
+@click.command(
+    short_help="execute python and then enter ipython",
+    context_settings=dict(ignore_unknown_options=True, allow_extra_args=True),
+)
+@click.argument('url', required=True, type=click.STRING)
+def fetch_and_ishell():
+    click.echo("is executing")
+    pass
+
+
+@click.command(
+    short_help="simple file server for transfer files with mac and other devices",
+    context_settings=dict(ignore_unknown_options=True, allow_extra_args=True),
+)
+def file_server():
+    click.echo("is serving file")
+    pass
+
+
+@click.command(
+    short_help="simple download",
+    context_settings=dict(ignore_unknown_options=True, allow_extra_args=True),
+)
+def download():
+    click.echo("is downloading")
+    pass
+
+
+@click.command(
+    short_help="complex rename and confirm with vim",
+    context_settings=dict(ignore_unknown_options=True, allow_extra_args=True),
+)
+def discover_new_words():
+    click.echo("discover new words")
+    pass
+
+
+@click.command(
+    short_help="self testing",
+    context_settings=dict(ignore_unknown_options=True, allow_extra_args=True),
+)
+def self_test():
+    click.echo("is self test")
+    pass
+
+
+@click.command(
+    short_help="self testing",
+    context_settings=dict(ignore_unknown_options=True, allow_extra_args=True),
+)
+def summary():
+    click.echo("is self test")
+    pass
+
+
+@click.command(
+    short_help="what the file?",
+    context_settings=dict(ignore_unknown_options=True, allow_extra_args=True),
+)
+def wtf():
+    click.echo("is self test")
+    pass
+
+
+# Install click commands.
+cli.add_command(unzip)
+
+if '-' not in ''.join(sys.argv) and len(sys.argv) > 1:
+    cli = DYMCommandCollection(sources=[cli])
+if __name__ == '__main__':
+    cli()

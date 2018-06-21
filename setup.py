@@ -18,7 +18,7 @@ REQUIRES_PYTHON = '>=3.6.0'
 VERSION = __version__
 ENTRY_POINTS = {
     'console_scripts': [
-        'yapylib = yapylib.cli:cli'
+        'yapylib = yapylib:cli'
     ]
 }
 
@@ -26,11 +26,7 @@ ENTRY_POINTS = {
 if 'develop' in sys.argv:
     REQUIRED = []
 else:
-    REQUIRED = list(
-        map(lambda x: x.split(';')[0],
-            filter(lambda x: x.strip() != '' and '==' in x,
-                   subprocess.check_output(['pipenv', 'lock', '-r'])
-                   .decode().split('\n'))), )
+    REQUIRED = []
 
 # The rest you shouldn't have to touch too much :)
 # ------------------------------------------------

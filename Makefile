@@ -43,6 +43,8 @@ clean-pyc: ## remove Python file artifacts
 	find . -name '__pycache__' -exec rm -fr {} +
 
 clean-test: ## remove test and coverage artifacts
+	rm -fr .cache/
+	rm -fr .pytest_cache/
 	rm -fr .tox/
 	rm -f .coverage
 	rm -fr htmlcov/
@@ -86,6 +88,9 @@ install: clean ## install the package to the active Python's site-packages
 	python setup.py install
 
 register: clean
+	python setup.py register
+
+publish: clean
 	python setup.py register
 
 initdb:
