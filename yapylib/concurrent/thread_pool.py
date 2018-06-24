@@ -36,7 +36,7 @@ class SimpleThreadPool(AbstractComplexThreadPool):
 
             time_record.append(self.post_process_queue.qsize())
 
-            if len(time_record) > 30 and sum(time_record[-50:]):
+            if len(time_record) > 30 and sum(time_record[-30:]):
                 break
         print("<== 监控线程 monitoring 我的剧情已落幕 我的爱恨已入土")
 
@@ -66,4 +66,3 @@ class SimpleThreadPool(AbstractComplexThreadPool):
             self.pool.submit(self.post_process_item_func, self.post_process_queue)
         self.pool.submit(self.monitoring)
 
-    pass

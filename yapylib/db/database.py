@@ -6,8 +6,7 @@ DATABASE_URL = os.environ.get('DATABASE_URL')
 
 class Database(object):
     """
-    数据库
-    专为日常简单操作 PostgreSQL 封装
+    数据库 日常操作
     """
 
     def __init__(self, db_url=None, **kwargs):

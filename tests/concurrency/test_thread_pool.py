@@ -36,8 +36,8 @@ def test_simple_thread_pool():
                 break
         print("<== 消费者: post_process_item_func 我的剧情已落幕 我的爱恨已入土")
 
-    SimpleThreadPool().register(
-        pre_process_item_func,
-        pre_q,
-        post_process_item_func,
-        post_q).start()
+    # SimpleThreadPool().register(
+    #     pre_process_item_func,
+    #     pre_q,
+    #     post_process_item_func,
+    #     post_q).start()
