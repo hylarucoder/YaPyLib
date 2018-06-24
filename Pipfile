@@ -31,6 +31,7 @@ typing = "*"
 voluptuous = "*"
 werkzeug = "*"
 xlrd = "*"
+"e1839a8" = {path = ".", editable = true}
 
 [dev-packages]
 "autopep8" = "*"
