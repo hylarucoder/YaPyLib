@@ -1,3 +1,4 @@
+.ropeproject/
 .vscode
 .pytest_cache
 yapylib.log*

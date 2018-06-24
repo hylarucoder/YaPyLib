@@ -1,5 +1,10 @@
 # YaPyLib
 
+[![Build Status](https://travis-ci.org/twocucao/YaPyLib.svg?branch=master)](https://travis-ci.org/twocucao/YaPyLib)
+![pyversions](https://img.shields.io/badge/python%20-3.6%2B-blue.svg)
+![pypi](https://img.shields.io/pypi/v/nine.svg)
+[![contributions welcome](https://img.shields.io/badge/contributions-welcome-ff69b4.svg)](https://github.com/twocucao/YaPyLib/issues)
+
 > Yet Another Pylib
 
 平时经常使用的代码，拷贝在身边，一用好多年
