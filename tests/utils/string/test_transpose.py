@@ -3,9 +3,9 @@
 
 import pytest
 
-from yapylib.text.transpose import filter_chinese_characters, filter_all_chinese_things, filter_numbers, \
+from yapylib.helpers.string.transpose import filter_chinese_characters, filter_all_chinese_things, filter_numbers, \
     shrink_repeated, get_digits_from_chinese, simple_render
-from yapylib.text.utils import turn_full_to_half_width, turn_half_to_full_width
+from yapylib.helpers.string.utils import turn_full_to_half_width, turn_half_to_full_width
 
 CHINESE_ARTICLE = """\
 Python的创始人为吉多·范罗苏姆（Guido van Rossum）。1989年的圣诞节期间，

@@ -5,7 +5,7 @@ from pprint import pprint
 import numpy as np
 import pandas as pd
 
-from yapylib.text.transpose import shrink_repeated4bilibili
+from yapylib.helpers.string.transpose import shrink_repeated4bilibili
 
 
 def dnw_4_normal(input_text):

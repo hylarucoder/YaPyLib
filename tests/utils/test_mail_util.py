@@ -1,7 +1,7 @@
 import psutil
 
 from yapylib.helpers.datetime import fmt_cur_date_time
-from yapylib.helpers.os import get_internal_ip
+from yapylib.helpers.osx import get_internal_ip
 
 mail_template = {
     "title": "[爬虫][某潜力数据][某网]小时报 {}".format(fmt_cur_date_time()),

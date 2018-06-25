@@ -14,8 +14,8 @@
 from yapylib.settings import JINJA2_ENV
 import re
 import string
-from yapylib.text.regexes import PT_CHINESE_AND_NUMBER, PT_CHINESE_SETENCE
-from yapylib.text.utils import is_empty
+from yapylib.helpers.string.regexes import PT_CHINESE_AND_NUMBER, PT_CHINESE_SETENCE
+from yapylib.helpers.string.utils import is_empty
 
 
 class SimpleTemplate(string.Template):

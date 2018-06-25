@@ -3,9 +3,9 @@
 
 import pytest
 
-from yapylib.text.process import has_pattern
-from yapylib.text.regexes import PT_CHINESE_ID_CARD, PT_CHINESE_MOB_NUM, PT_CHINESE_MONEY, PT_CHINESE_TELEPHONE, \
-    PT_CHINESE_SETENCE
+from yapylib.helpers.string.process import has_pattern
+from yapylib.helpers.string.regexes import PT_CHINESE_ID_CARD, PT_CHINESE_MOB_NUM, PT_CHINESE_MONEY, PT_CHINESE_SETENCE, \
+    PT_CHINESE_TELEPHONE
 
 
 @pytest.mark.parametrize('test_pattern,test_input,expected', [
@@ -43,5 +43,3 @@ def test_has_pattern(test_pattern, test_input, expected):
 def test_match_pattern(test_pattern, test_input, expected):
     # assert match_pattern(test_input, test_pattern) == expected
     pass
-
-

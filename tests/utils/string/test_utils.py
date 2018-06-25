@@ -1,6 +1,6 @@
 import pytest
 
-from yapylib.text.utils import is_blank, is_empty, is_valid_string, valid_similarity
+from yapylib.helpers.string.utils import is_blank, is_empty, is_valid_string, valid_similarity
 
 
 @pytest.mark.parametrize('test_str,expected', [

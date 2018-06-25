@@ -8,7 +8,7 @@ import crayons
 import requests
 from click_didyoumean import DYMCommandCollection
 
-from yapylib.cmd.core import format_help
+from yapylib.commands.core import format_help
 from yapylib.helpers import file
 from yapylib.helpers.type_utils import is_html, is_json
 from .__version__ import __version__

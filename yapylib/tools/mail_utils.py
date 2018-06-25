@@ -9,7 +9,7 @@ from email.utils import parseaddr, formataddr
 
 from yapylib.exceptions.handlers import retries
 from yapylib.settings import MAIL_SERVER, MAIL_DEFAULT_SENDER, MAIL_PASSWORD, SENDER, RECEIVERS, DEBUG
-from yapylib.text.transpose import render_template
+from yapylib.helpers.string.transpose import render_template
 
 MAIL_TYPE_TEXT = 1
 MAIL_TYPE_TEXT_ATTACHMENT = 2
