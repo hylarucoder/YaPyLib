@@ -1,12 +1,4 @@
-import random
-import traceback
-
-import requests
-import time
-
-from yapylib.crawler.fetcher import CaptchaException
-from yapylib.logging import get_logger
-from yapylib.utils.date_util import cur_time
+from yapylib.helpers.datetime import cur_time
 
 
 

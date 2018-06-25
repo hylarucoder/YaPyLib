@@ -1,4 +1,46 @@
-import os
+def notify(title, subtitle, info_text, delay=0, sound=False, userInfo={}):
+    import Foundation, objc
+
+    NSUserNotification = objc.lookUpClass('NSUserNotification')
+    NSUserNotificationCenter = objc.lookUpClass('NSUserNotificationCenter')
+    """
+    Python method to show a desktop notification on Mountain Lion. Where:
+    title: Title of notification
+    subtitle: Subtitle of notification
+    info_text: Informative text of notification
+    delay: Delay (in seconds) before showing the notification
+    sound: Play the default notification sound
+    userInfo: a dictionary that can be used to handle clicks in your
+    app's applicationDidFinishLaunching:aNotification method
+    """
+    notification = NSUserNotification.alloc().init()
+    notification.setTitle_(title)
+    notification.setSubtitle_(subtitle)
+    notification.setInformativeText_(info_text)
+    notification.setUserInfo_(userInfo)
+    if sound:
+        notification.setSoundName_("NSUserNotificationDefaultSoundName")
+    notification.setDeliveryDate_(Foundation.NSDate.dateWithTimeInterval_sinceDate_(delay, Foundation.NSDate.date()))
+    NSUserNotificationCenter.defaultUserNotificationCenter().scheduleNotification_(notification)
+
+
+"""
+下面的程序主要用于MacOS上一些程序的调用
+"""
+
+
+def open_image():
+    pass
+
+
+def open_url():
+    pass
+
+
+def open_video():
+    pass
+
+
 import sys
 import uuid
 import socket
@@ -12,7 +54,7 @@ import time
 from yapylib.logging import get_logger
 import getpass
 
-from yapylib.utils.date_util import cur_time
+from yapylib.helpers.datetime import cur_time
 
 
 def check_setting_and_env():
@@ -78,7 +120,7 @@ def clear_terminal():
     print(chr(27) + "[2J")
 
 
-import os, psutil, numpy as np
+import os, psutil
 
 
 def memory_usage():

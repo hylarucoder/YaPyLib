@@ -1,7 +1,8 @@
 """
-对常见字典数据结构进行封装
-1. 翻转可翻转字典
-2. 排除字典指定
+常见可遍历的数据结构的常见操作
+1. dict
+2. list
+3. set
 """
 import operator
 from collections import OrderedDict

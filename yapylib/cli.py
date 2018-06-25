@@ -9,8 +9,8 @@ import requests
 from click_didyoumean import DYMCommandCollection
 
 from yapylib.cmd.core import format_help
-from yapylib.utils import file_utils
-from yapylib.utils.type_util import is_html, is_json
+from yapylib.helpers import file
+from yapylib.helpers.type_utils import is_html, is_json
 from .__version__ import __version__
 
 # from . import settings
@@ -183,7 +183,7 @@ def wtf():
 @click.argument('file', required=True, type=click.STRING)
 def unzip(file=None):
     click.echo("is unzipping gbk")
-    from yapylib.utils.file_utils import unzip_gbk_file
+    from yapylib.helpers.file import unzip_gbk_file
     unzip_gbk_file(file, None)
     pass
 
@@ -228,10 +228,10 @@ def cleanmymac():
         "/Volumes/*/.Trashes"
     ]
     for _dir in dirs:
-        fs = file_utils.get_folder_size(_dir)
+        fs = file.get_folder_size(_dir)
         print("路径\t{_dir}\t{fs}".format(_dir=_dir, fs=fs))
-        file_utils.delete_file(_dir)
-        fs = file_utils.get_folder_size(_dir)
+        file.delete_file(_dir)
+        fs = file.get_folder_size(_dir)
         print("路径\t{_dir}\t{fs}".format(_dir=_dir, fs=fs))
     after_disk_usage = shutil.disk_usage(".")
     print(before_disk_usage)

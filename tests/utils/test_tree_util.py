@@ -1,4 +1,4 @@
-from yapylib.utils.tree_util import get_level
+from yapylib.helpers.tree_util import get_level
 
 
 def test_get_level_obj():

@@ -1,7 +1,7 @@
 import click
 
 from yapylib.cli import pass_context
-from yapylib.utils.file_utils import unzip_gbk_file
+from yapylib.helpers.file import unzip_gbk_file
 
 
 @click.command('unzip_gbk', short_help='unzip_gbk')

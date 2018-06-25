@@ -1,6 +1,6 @@
 import random
 
-from yapylib.utils.date_util import cur_time
+from yapylib.helpers.datetime import cur_time
 
 NO_PROXY = 0
 ONLINE_PROXY = 1

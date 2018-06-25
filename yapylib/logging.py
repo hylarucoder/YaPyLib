@@ -69,6 +69,6 @@ LOGGING = {  # dictConfig for output stream and file logging
 dictConfig(LOGGING)
 
 
-def get_logger(name="common"):
+def get_logger(name="yapylib"):
     logger = logging.getLogger(name)
     return logger

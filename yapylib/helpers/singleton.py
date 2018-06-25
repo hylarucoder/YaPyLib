@@ -6,6 +6,12 @@ def singleton(cls):
     :return:
 
     单例的装饰器实现
+
+    Usage:
+
+    @singleton
+    class MyClass:
+        pass
     """
 
     instances = {}
@@ -16,12 +22,3 @@ def singleton(cls):
         return instances[cls]
 
     return get_instance
-
-
-"""
-@singleton
-class MyClass:
-    pass
-    
-# TODO: 有机会补充测试
-"""

@@ -1,5 +1,5 @@
 import pytest
-from yapylib.utils.type_util import is_json
+from yapylib.helpers.type_utils import is_json
 
 
 @pytest.mark.parametrize('test_str,expected', [

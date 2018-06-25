@@ -1,5 +1,5 @@
 # coding=utf-8
-from yapylib.db.database import Database
+from yapylib.helpers.db import Database
 
 
 class TestDatabase(object):
