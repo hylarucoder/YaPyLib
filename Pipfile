@@ -31,7 +31,6 @@ typing = "*"
 voluptuous = "*"
 werkzeug = "*"
 xlrd = "*"
-"e1839a8" = {path = ".", editable = true}
 
 [dev-packages]
 "autopep8" = "*"
@@ -47,5 +46,4 @@ tox = "*"
 twine = "*"
 
 [requires]
-python_version = '3.6'
-python_full_version = '3.6.5'
+python_version = '3.7'
