@@ -1,7 +1,7 @@
 {
     "_meta": {
         "hash": {
-            "sha256": "b32b63af123bf2c2b2ed63163b3b6136113c211dbad2913ac12013f0fef75089"
+            "sha256": "a98616e27210e041aad1d2a8413bf7da11e24a1b7aa6a10b76e801f8c03adb80"
         },
         "pipfile-spec": 6,
         "requires": {
@@ -103,6 +103,10 @@
                 "sha256:c39efa13fbdeb4506c476c9b3babf6a718da943dab7811c206005a4a956c080c"
             ],
             "version": "==4.3.0"
+        },
+        "e1839a8": {
+            "editable": true,
+            "path": "."
         },
         "et-xmlfile": {
             "hashes": [

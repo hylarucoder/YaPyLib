@@ -23,10 +23,16 @@ ENTRY_POINTS = {
 }
 
 
-if 'develop' in sys.argv:
-    REQUIRED = []
+if 'bdist_wheel' in sys.argv:
+    # install exactly the locked version to keep sync between different envs
+    REQUIRED = list(
+        map(lambda x: x.split(';')[0],
+            filter(lambda x: x.strip() != '' and '==' in x,
+                   subprocess.check_output(['pipenv', 'lock', '-r']).decode().split('\n'))), )
 else:
+    # 如果pipenv install  会更新Pipfile.lock, 导致`pipenv lock -r`循环执行, 此时requires设置为空
     REQUIRED = []
+
 
 # The rest you shouldn't have to touch too much :)
 # ------------------------------------------------
